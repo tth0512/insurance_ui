@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AegisLife - Cổng CSKH Bảo Hiểm Nhân Thọ (Staff Portal)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Fonts: Vietnamese-Supported Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="staff-management.css">
+</head>
+
+<body>
+  <!-- OUTER SOFT BLUE CANVAS -->
+  <div class="app-canvas">
+
+    <!-- MAIN 4-COLUMN INBOX WINDOW -->
+    <div class="inbox-window">
+
+      <!-- ================= COLUMN 1: NAVIGATION SIDEBAR ================= -->
+      <aside class="inbox-nav-col" id="sidebar">
+        <!-- Top Header: Brand Dropdown + Collapse -->
+        <div class="nav-col-header">
+          <div class="brand-dropdown-wrap" title="Cổng CSKH Bảo Hiểm Nhân Thọ AegisLife">
+            <svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span class="brand-title">AegisLife</span>
+          </div>
+
+          <div class="nav-header-actions">
+            <button class="nav-icon-btn" id="toggle-sidebar" title="Thu gọn / Mở rộng Sidebar">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+                <polyline points="15 9 12 12 15 15"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Global Quick Search Box -->
+        <div class="nav-search-wrap">
+          <div class="nav-search-box">
+            <svg class="search-glass" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+            </svg>
+            <input type="text" id="global-search" placeholder="Search..." autocomplete="off">
+          </div>
+        </div>
+
+        <!-- Nav Scrollable Sections -->
+        <div class="nav-scroll-area">
+
+          <!-- Main Inboxes / Queues -->
+          <div class="nav-group">
+            <div class="nav-group-title">INBOXES</div>
+
+            <!-- 1. All Conversations -->
+            <button class="nav-item-btn" data-category="all" id="nav-item-all" title="All conversations">
+              <div class="nav-item-left">
+                <svg class="nav-item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span class="nav-item-label">All</span>
+              </div>
+              <span class="nav-item-count">7</span>
+            </button>
+
+            <!-- 2. Requests Queue -->
+            <button class="nav-item-btn active" data-category="request" id="nav-item-requests"
+              title="Requests queue needing staff acceptance">
+              <div class="nav-item-left">
+                <svg class="nav-item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span class="nav-item-label">Requests</span>
+              </div>
+              <span class="nav-item-count" id="count-requests">2</span>
+            </button>
+
+            <!-- 3. Active / Recent Chats -->
+            <button class="nav-item-btn" data-category="recent" id="nav-item-recents"
+              title="Assigned / Active conversations">
+              <div class="nav-item-left">
+                <svg class="nav-item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="nav-item-label">Active</span>
+              </div>
+              <span class="nav-item-count" id="count-recents">3</span>
+            </button>
+
+            <!-- 4. New Policies -->
+            <button class="nav-item-btn" data-category="new" id="nav-item-new" title="Newly issued policies">
+              <div class="nav-item-left">
+                <svg class="nav-item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+                <span class="nav-item-label">New</span>
+              </div>
+              <span class="nav-item-count" id="count-new-customers">2</span>
+            </button>
+
+            <!-- 5. Tickets -->
+            <button class="nav-item-btn" data-category="tickets" id="btn-sidebar-tickets"
+              title="Track Tickets & Requests">
+              <div class="nav-item-left">
+                <svg class="nav-item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  <line x1="9" y1="12" x2="15" y2="12"></line>
+                  <line x1="9" y1="16" x2="13" y2="16"></line>
+                </svg>
+                <span class="nav-item-label">Tickets</span>
+              </div>
+              <span class="nav-item-count" id="nav-tickets-badge">2</span>
+            </button>
+          </div>
+
+          <!-- Tools / Policy Lookup -->
+          <div class="nav-group">
+            <div class="nav-group-title">TOOLS</div>
+            <button class="nav-item-btn" id="nav-item-policy-lookup" data-mode="policy-lookup"
+              title="Search and inspect all insurance policies">
+              <div class="nav-item-left">
+                <svg class="nav-item-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span class="nav-item-label">Policy Lookup</span>
+              </div>
+            </button>
+          </div>
+          <div class="nav-group nav-group-preferences">
+            <div class="nav-group-title">PREFERENCES</div>
+            <div class="font-select-card" title="Select font to test interface">
+              <div class="font-select-inner">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                  <line x1="9" y1="20" x2="15" y2="20"></line>
+                  <line x1="12" y1="4" x2="12" y2="20"></line>
+                </svg>
+                <select id="font-family-select" class="font-select-dropdown" aria-label="Choose font">
+                  <option value="'Lexend', sans-serif" selected>Lexend (Default)</option>
+                  <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+                  <option value="'Be Vietnam Pro', sans-serif">Be Vietnam Pro</option>
+                  <option value="'Inter', sans-serif">Inter</option>
+                  <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+                  <option value="'Outfit', sans-serif">Outfit</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Staff Card -->
+        <div class="nav-col-footer">
+          <div class="staff-card" id="staff-card" title="Staff account">
+            <div class="staff-avatar-box">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+                alt="Avatar" class="staff-avatar-img">
+              <span class="online-indicator"></span>
+            </div>
+            <div class="staff-card-text">
+              <span class="staff-name">Suvigya</span>
+              <span class="staff-role">Support Specialist</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================= WORKSPACE PANES WRAPPER (COLUMNS 2, 3, RAIL, 4) ================= -->
+      <div class="workspace-panes-wrapper" id="workspace-panes">
+
+        <!-- ================= COLUMN 2: CUSTOMER CONVERSATION LIST ================= -->
+        <section class="conversation-list-col" id="conversation-list-col">
+          <!-- Header of Column 2 -->
+          <div class="col2-header">
+            <div class="col2-title-row">
+              <h2 class="col2-heading" id="col2-section-title">Requests</h2>
+            </div>
+            <div class="col2-filter-row">
+              <button class="col2-filter-pill" id="col2-count-pill">
+                <span id="col2-filter-text">2 Open Cases</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <button class="col2-filter-pill">
+                <span>High Priority</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+            <!-- In-List Filter Input -->
+            <div class="col2-search-wrap">
+              <svg class="search-glass" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+              </svg>
+              <input type="text" id="sidebar-cust-search" placeholder="Search conversations..." autocomplete="off">
+            </div>
+          </div>
+
+          <!-- Scrollable Customer Cards Container (Rendered dynamically by app.js) -->
+          <div class="col2-cards-container" id="col2-customer-list">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </section>
+
+        <!-- ================= COLUMN 3: CHAT WORKSPACE ================= -->
+        <main class="chat-workspace-col" id="chat-workspace-col">
+          <!-- Top Workspace Bar: Customer Info + Action Buttons -->
+          <header class="chat-top-header">
+            <div class="chat-header-left">
+              <div class="chat-header-avatar-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80"
+                  alt="Customer" class="chat-header-avatar" id="chat-header-avatar">
+              </div>
+              <div class="chat-header-text">
+                <div class="chat-header-title-row">
+                  <h2 class="chat-header-name" id="chat-header-cust-name">Nguyễn Thảo Ly</h2>
+                  <span class="chat-header-ticket-pill" id="summary-cust-ticket">#TK-7702</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Action Buttons (Takeover) -->
+            <div class="chat-header-actions">
+              <!-- Live Takeover Toggle -->
+              <button class="top-action-btn takeover-pill active" id="btn-takeover" title="Toggle Live Takeover Mode">
+                <span class="live-dot"></span>
+                <span class="takeover-txt">Takeover</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- Message Stream Area (Rendered dynamically by app.js, includes AI Ticket Proposal Card - Req 5) -->
+          <div class="chat-flow-container" id="chat-flow">
+            <div class="chat-flow-inner" id="chat-flow-inner">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+          </div>
+
+          <!-- Chat Composer Box -->
+          <div class="chat-composer-wrapper">
+            <div class="chat-composer-box">
+              <textarea id="chat-message-input" rows="2"
+                placeholder="Type your response to the customer (Press Enter to send)..." autocomplete="off"></textarea>
+
+              <div class="composer-action-bar">
+                <div class="composer-tools-left">
+                  <button class="tool-btn" id="btn-macro-popup" title="Quick response templates">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                      <line x1="9" y1="9" x2="15" y2="9"></line>
+                      <line x1="9" y1="13" x2="15" y2="13"></line>
+                      <line x1="9" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                    <span>Templates</span>
+                  </button>
+                  <button class="tool-btn" title="Attach documents">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path
+                        d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="composer-tools-right">
+                  <span class="send-shortcut-hint">Enter to send</span>
+                  <button class="btn-send-message" id="btn-send-chat" title="Send message (Enter)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- ================= VERTICAL SUB-RAIL FOR RIGHT PANEL ================= -->
+        <nav class="right-panel-rail" id="right-panel-rail" aria-label="Right Panel View Switcher">
+          <!-- 1. Top Section: Collapse / Expand Details Panel Button -->
+          <div class="rail-top-action">
+            <button class="rail-btn rail-btn-toggle" id="btn-toggle-details" title="Collapse / Expand Details Panel">
+              <svg class="rail-toggle-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <line x1="15" y1="3" x2="15" y2="21"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- 2. Clean Visual Divider -->
+          <div class="rail-divider"></div>
+
+          <!-- 3. Lower Section: View Switcher Icon-Only Buttons -->
+          <div class="rail-views-group">
+            <button class="rail-btn active" id="rail-btn-details" data-panel="details"
+              title="Case Details & Customer Profile">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </button>
+
+            <button class="rail-btn" id="rail-btn-agent" data-panel="agent" title="AI Agent Copilot & Knowledge RAG">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+            </button>
+
+            <button class="rail-btn" id="rail-btn-lookup" data-panel="lookup" title="Quick Policy Lookup">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <!-- ================= COLUMN 4: DETAILS / AGENT / LOOKUP SWAP PANEL ================= -->
+        <aside class="details-panel-col" id="right-panel-col">
+
+          <!-- VIEW A: DETAILS (Customer Profile & Insurance Policy) -->
+          <div class="panel-view active" id="view-details">
+            <div class="details-header">
+              <h3 class="details-title">Case Details</h3>
+              <button class="details-close-btn" id="btn-close-details" title="Collapse Panel">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="details-scroll-body">
+              <!-- 1. CASE OVERVIEW -->
+              <div class="details-card-box">
+                <div class="card-box-header">
+                  <span class="card-box-title">CASE OVERVIEW</span>
+                </div>
+                <div class="details-meta-grid">
+                  <div class="meta-item">
+                    <span class="meta-label">Status</span>
+                    <span class="meta-pill-blue" id="details-case-status">Pending</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Assignee</span>
+                    <div class="assignee-box">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=50" alt="Suvigya"
+                        class="assignee-avatar">
+                      <span class="assignee-name">Suvigya</span>
+                    </div>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Tier</span>
+                    <span class="meta-team-val" id="details-case-tier">Gold VIP</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-label">Priority</span>
+                    <span class="meta-priority-val">High</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. AI CONTEXT SUMMARY -->
+              <div class="details-card-box">
+                <div class="card-box-header">
+                  <span class="card-box-title">AI CONTEXT SUMMARY</span>
+                  <span class="ai-sparkle-pill">✨ Auto Summary</span>
+                </div>
+                <p class="ai-context-text" id="summary-ai-text">
+                  Khách hàng điều trị viêm phế quản cấp tại BV Quốc tế từ 18/10 đến 22/10. AI Agent đã tóm tắt và
+                  khách hàng đã xác nhận hợp lệ tạo Ticket #TK-7702 (2.000.000 VNĐ). Chờ Staff tiếp nhận.
+                </p>
+              </div>
+
+              <!-- 3. CUSTOMER PROFILE -->
+              <div class="details-card-box">
+                <div class="card-box-header">
+                  <span class="card-box-title">CUSTOMER PROFILE</span>
+                </div>
+                <div class="aligned-kv-list">
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Full Name</span>
+                    <span class="aligned-kv-val bold" id="summary-cust-name">Nguyễn Thảo Ly</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Phone</span>
+                    <span class="aligned-kv-val" id="summary-cust-phone">0912.845.921</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Email</span>
+                    <span class="aligned-kv-val" id="prof-email">thaoly.nguyen@gmail.com</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">National ID</span>
+                    <span class="aligned-kv-val" id="prof-cccd">001201008892</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. INSURANCE POLICY -->
+              <div class="details-card-box">
+                <div class="card-box-header">
+                  <span class="card-box-title">INSURANCE POLICY</span>
+                  <span class="badge-policy-inforce">● In-Force</span>
+                </div>
+                <div class="aligned-kv-list">
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Policy No</span>
+                    <span class="aligned-kv-val bold policy-code" id="prof-company">#POL-884920</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Plan</span>
+                    <span class="aligned-kv-val bold" id="prof-policy-name">Kế hoạch Bảo An Toàn Diện</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Sum Assured</span>
+                    <span class="aligned-kv-val bold">500,000,000 VNĐ</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Daily Benefit</span>
+                    <span class="aligned-kv-val" id="prof-benefit">500,000 VNĐ/day</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Annual Quota</span>
+                    <span class="aligned-kv-val" id="prof-quota">18,000,000 / 20,000,000 VNĐ</span>
+                  </div>
+                  <div class="aligned-kv-row">
+                    <span class="aligned-kv-key">Beneficiary</span>
+                    <span class="aligned-kv-val" id="prof-beneficiary">Nguyễn Văn A (Con ruột - 100%)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. TICKET HISTORY -->
+              <div class="details-card-box">
+                <div class="card-box-header">
+                  <span class="card-box-title">TICKET HISTORY</span>
+                </div>
+                <div class="details-recent-convos" id="details-recent-convos">
+                  <div class="recent-convo-item">
+                    <div class="convo-item-top">
+                      <span class="convo-time">#TK-7702</span>
+                      <span class="meta-pill-blue">Pending</span>
+                    </div>
+                    <p class="convo-snippet">Bồi thường trợ cấp nằm viện 4 ngày (Viêm phế quản cấp)</p>
+                  </div>
+                  <div class="recent-convo-item">
+                    <div class="convo-item-top">
+                      <span class="convo-time">#TK-6510</span>
+                      <span class="meta-pill-gray">Resolved</span>
+                    </div>
+                    <p class="convo-snippet">Cập nhật CCCD gắn chip mới</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- VIEW B: AI AGENT COPILOT (Swapped in when Copilot is selected) -->
+          <div class="panel-view" id="view-agent">
+            <!-- Copilot Top Header -->
+            <div class="details-header agent-view-header">
+              <div class="agent-header-title-box">
+                <span class="sparkle-icon">✨</span>
+                <h3 class="details-title" id="sidecar-agent-title">AI Copilot • Nguyễn Thảo Ly</h3>
+              </div>
+              <button class="details-close-btn" id="btn-close-agent" title="Back to Details">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Copilot Body -->
+            <div class="agent-view-body">
+              <!-- 1-Click Action Chips -->
+              <div class="agent-chips-container">
+                <span class="chips-title">QUICK KNOWLEDGE PROMPTS</span>
+                <div class="agent-chips-wrap" id="sidecar-chips-wrap">
+                  <!-- Rendered dynamically by app.js -->
+                </div>
+              </div>
+
+              <!-- Agent Chat Conversation Stream -->
+              <div class="agent-chat-stream" id="sidecar-chat-stream">
+                <!-- Rendered dynamically by app.js -->
+              </div>
+
+              <!-- Agent Query Composer -->
+              <div class="agent-query-box">
+                <input type="text" id="sidecar-agent-input"
+                  placeholder="Ask AI about terms, benefits, waiting periods..." autocomplete="off">
+                <button class="agent-submit-btn" id="btn-sidecar-send" title="Send query to AI (Enter)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW C: QUICK POLICY LOOKUP PANEL -->
+          <div class="panel-view" id="view-lookup">
+            <div class="details-header">
+              <div class="lookup-header-title-box">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <h3 class="details-title">Quick Policy Lookup</h3>
+              </div>
+              <button class="details-close-btn" id="btn-close-lookup" title="Back to Details">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="details-scroll-body">
+              <!-- Search Box -->
+              <div class="side-lookup-search-box">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+                </svg>
+                <input type="text" id="side-lookup-input" placeholder="Search Policy #, CCCD, Name..."
+                  autocomplete="off">
+              </div>
+
+              <!-- Current Customer Contract Quick Banner -->
+              <div class="details-card-box side-lookup-current-card">
+                <div class="card-box-header">
+                  <span class="card-box-title">CURRENT CASE POLICY</span>
+                  <span class="badge-policy-inforce">● In-Force</span>
+                </div>
+                <div class="aligned-kv-list" id="side-lookup-current-content">
+                  <!-- Dynamically filled by app.js -->
+                </div>
+                <button class="btn-side-open-full" id="btn-side-open-full-current"
+                  title="Open this policy in full explorer">
+                  <span>Open Full Policy Dossier</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Matching Policies List -->
+              <div class="side-lookup-results-wrap">
+                <div class="side-lookup-results-header">
+                  <span class="card-box-title">ALL POLICIES DIRECTORY</span>
+                  <span class="meta-pill-blue" id="side-lookup-count">7 Total</span>
+                </div>
+                <div class="side-lookup-results-list" id="side-lookup-results-list">
+                  <!-- Rendered dynamically by app.js -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+      </div><!-- /workspace-panes-wrapper -->
+
+      <!-- ================= FULL DEDICATED POLICY LOOKUP PORTAL ================= -->
+      <section class="full-lookup-portal-view" id="full-policy-lookup-view">
+        <!-- Top Toolbar -->
+        <header class="full-lookup-topbar">
+          <div class="topbar-left-group">
+            <button class="btn-return-inbox" id="btn-return-inbox" title="Return to Conversations Workspace">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Inbox</span>
+            </button>
+            <div class="topbar-divider"></div>
+            <div class="full-lookup-title-box">
+              <h2 class="full-lookup-heading">Policy Explorer &amp; Dossier</h2>
+              <span class="full-lookup-subheading">Tra cứu, xác thực và thẩm tra toàn diện hợp đồng bảo hiểm nhân
+                thọ</span>
+            </div>
+          </div>
+
+          <div class="topbar-right-group">
+            <span class="core-sync-pill">
+              <span class="live-dot-green"></span>
+              Core Insurance DB Synced
+            </span>
+          </div>
+        </header>
+
+        <!-- 2-Pane Explorer Body -->
+        <div class="full-lookup-content">
+          <!-- Left Sub-Pane: Directory & Filters (380px) -->
+          <aside class="full-lookup-directory-pane">
+            <!-- Search bar -->
+            <div class="full-lookup-search-wrap">
+              <div class="full-lookup-search-box">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+                </svg>
+                <input type="text" id="full-policy-search-input" placeholder="Search by Policy #, CCCD, phone, owner..."
+                  autocomplete="off">
+              </div>
+            </div>
+
+            <!-- Status Filter Pills -->
+            <div class="full-lookup-filter-pills" id="full-policy-status-filters">
+              <button class="status-filter-pill active" data-filter="all">All (7)</button>
+              <button class="status-filter-pill" data-filter="In-Force">In-Force (5)</button>
+              <button class="status-filter-pill" data-filter="Grace Period">Grace Period (1)</button>
+              <button class="status-filter-pill" data-filter="Review">Review (1)</button>
+            </div>
+
+            <!-- Scrollable Contract Cards Directory -->
+            <div class="full-lookup-card-list" id="full-policy-card-list">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+          </aside>
+
+          <!-- Right Sub-Pane: Comprehensive Contract Dossier (Flex: 1) -->
+          <main class="full-lookup-dossier-pane" id="full-lookup-dossier-pane">
+            <!-- Rendered dynamically by app.js -->
+          </main>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION (Req 9) -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="staff-management.js"></script>
+</body>
+
+</html>

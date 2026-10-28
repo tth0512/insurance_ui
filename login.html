@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - AegisLife Cổng Tra Cứu & Bảo Hiểm Trực Tuyến</title>
+
+    <!-- Favicon / Brand SVG -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.2'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>">
+
+    <!-- Google Fonts: Lexend & Inter (Matching Project Style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- PAGE CONTAINER -->
+    <div class="login-page-container">
+
+        <!-- SPLIT 2-COLUMN LOGIN WINDOW -->
+        <main class="login-window">
+
+            <!-- ==========================================================================
+           PHẦN BÊN TRÁI: LOGO & TÊN APP Ở ĐẦU, BÊN DƯỚI LÀ HÌNH MINH HỌA BẢO HIỂM
+           ========================================================================== -->
+            <section class="login-hero-panel" aria-label="AegisLife Giới thiệu">
+
+                <!-- 1. Ở ĐẦU: LOGO VÀ TÊN CỦA APP -->
+                <header class="hero-header">
+                    <div class="hero-brand-wrap">
+                        <div class="hero-brand-icon-box">-It
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="hero-brand-info">
+                            <span class="hero-brand-name">AegisLife</span>
+                            <span class="hero-brand-tagline">Cổng Tra Cứu &amp; Bảo Hiểm Trực Tuyến</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- 2. BÊN DƯỚI: HÌNH MINH HỌA BẢO HIỂM (LINE ART TRỰC TIẾP, NỀN HÒA TRỘN TỰ NHIÊN) -->
+                <div class="hero-illustration-area">
+                    <img src="insurance_line_hero.jpg" alt="Minh họa bảo hiểm gia đình và an sinh y tế AegisLife"
+                        class="hero-line-img">
+                </div>
+
+                <!-- 3. FOOTER BÊN TRÁI: CÁC TIÊU CHUẨN AN TOÀN & BẢO MẬT -->
+                <footer class="hero-footer-features">
+                    <p class="features-title">An tâm kết nối quyền lợi bảo hiểm &amp; y tế</p>
+                    <div class="features-grid">
+                        <div class="feature-item" title="Bảo mật chuẩn mã hóa tài chính">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <span>Bảo mật kép</span>
+                        </div>
+
+                        <div class="feature-item" title="Tra cứu hợp đồng và viện phí tức thì">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                            <span>Tra cứu 3s</span>
+                        </div>
+
+                        <div class="feature-item" title="Hỗ trợ kết nối tư vấn chuyên viên">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span>CSKH 24/7</span>
+                        </div>
+                    </div>
+                </footer>
+
+            </section>
+
+            <!-- ==========================================================================
+           PHẦN BÊN PHẢI: FORM ĐĂNG NHẬP
+           - 2 mục: Mã BHYT / DDCN / CCCD và Mật khẩu
+           - Ngay dưới Mật khẩu là tickbox Lưu thông tin
+           - Bên dưới là nút Quên mật khẩu và Đăng nhập
+           ========================================================================== -->
+            <section class="login-form-panel" aria-label="Biểu mẫu đăng nhập">
+
+                <!-- Form Heading Area -->
+                <div class="form-header-area">
+                    <div class="form-badge-pill">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>Hệ Thống Xác Thực An Toàn</span>
+                    </div>
+                    <h1 class="form-title">Đăng nhập tài khoản</h1>
+                    <p class="form-subtitle">Tra cứu hồ sơ quyền lợi, hợp đồng bảo hiểm và yêu cầu trợ cấp viện phí trực
+                        tuyến.</p>
+                </div>
+
+                <!-- MAIN LOGIN FORM -->
+                <form class="login-form" id="login-form" novalidate>
+
+                    <!-- ================= MỤC 1: MÃ BHYT / ĐDCN / CCCD ================= -->
+                    <div class="form-field-group">
+                        <label class="field-label" for="identifier-input">
+                            <span>Mã BHYT / ĐDCN / CCCD <span class="req-star">*</span></span>
+                        </label>
+                        <div class="input-container">
+                            <span class="input-icon-left">
+                                <!-- ID Card / CCCD SVG Icon -->
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                    <circle cx="8" cy="10" r="2"></circle>
+                                    <path d="M14 8h4"></path>
+                                    <path d="M14 12h4"></path>
+                                    <path d="M6 16c0-1.5 1.5-2 3-2s3 .5 3 2"></path>
+                                </svg>
+                            </span>
+                            <input type="text" class="form-input" id="identifier-input"
+                                placeholder="Nhập mã thẻ BHYT, số ĐDCN hoặc CCCD" required autocomplete="username"
+                                autofocus>
+                        </div>
+                    </div>
+
+                    <!-- ================= MỤC 2: MẬT KHẨU ================= -->
+                    <div class="form-field-group">
+                        <label class="field-label" for="password-input">
+                            <span>Mật khẩu <span class="req-star">*</span></span>
+                        </label>
+                        <div class="input-container">
+                            <span class="input-icon-left">
+                                <!-- Key / Lock SVG Icon -->
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                            <input type="password" class="form-input" id="password-input"
+                                placeholder="Nhập mật khẩu truy cập" required autocomplete="current-password">
+                            <!-- Nút toggle ẩn / hiện mật khẩu -->
+                            <button type="button" class="btn-eye-toggle" id="btn-toggle-pwd" title="Ẩn / Hiện mật khẩu"
+                                aria-label="Toggle password visibility">
+                                <svg id="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ================= NGAY DƯỚI MẬT KHẨU: TICKBOX LƯU THÔNG TIN ================= -->
+                    <div class="form-options-row">
+                        <label class="checkbox-container" for="remember-me">
+                            <input type="checkbox" id="remember-me" name="remember">
+                            <span class="custom-checkbox">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            <span class="checkbox-label-text">Lưu thông tin</span>
+                        </label>
+
+                        <!-- Nút Quên mật khẩu đặt trên cùng hàng hoặc bên cạnh tùy chọn -->
+                        <button type="button" class="btn-forgot-password" id="btn-forgot-password">Quên mật
+                            khẩu?</button>
+                    </div>
+
+                    <!-- ================= BÊN DƯỚI: NÚT ĐĂNG NHẬP ================= -->
+                    <div class="form-action-area">
+                        <button type="submit" class="btn-submit-login" id="btn-submit-login">
+                            <span>Đăng nhập</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- SAMPLE QUICK FILL CHIPS (Tiện ích hỗ trợ người dùng trải nghiệm nhanh) -->
+                <div class="quick-login-hints">
+                    <div class="hint-title">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <span>Dữ liệu mẫu thử nghiệm nhanh:</span>
+                    </div>
+                    <div class="hint-chips-wrap">
+                        <button type="button" class="hint-chip" data-id="001202008888" data-pwd="AegisPass@2026"
+                            title="Điền mẫu CCCD">CCCD: 001202008888</button>
+                        <button type="button" class="hint-chip" data-id="GD4790123456789" data-pwd="AegisPass@2026"
+                            title="Điền mẫu BHYT">BHYT: GD4790123456789</button>
+                        <button type="button" class="hint-chip" data-id="038096001234" data-pwd="AegisPass@2026"
+                            title="Điền mẫu ĐDCN">ĐDCN: 038096001234</button>
+                    </div>
+                </div>
+
+                <!-- FOOTER: CHUYỂN TỚI CỔNG CHUYÊN VIÊN CSKH -->
+                <div class="login-footer-nav">
+                    <span>Bạn là chuyên viên CSKH?</span>
+                    <a href="index.html" class="link-staff-portal"
+                        title="Chuyển sang Giao diện Cổng Quản lý Chuyên viên">
+                        <span>Cổng Chuyên Viên CSKH</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- ==========================================================================
+       MODAL: QUÊN MẬT KHẨU (Interactive Modal Phục Hồi Mật Khẩu)
+       ========================================================================== -->
+    <div class="modal-overlay" id="forgot-modal" aria-hidden="true" role="dialog">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title-row">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <h3 class="modal-title">Khôi phục mật khẩu</h3>
+                </div>
+                <button type="button" class="btn-close-modal" id="btn-close-forgot-modal" title="Đóng cửa sổ">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-desc">Vui lòng nhập Mã BHYT, Số CCCD hoặc Số điện thoại đã đăng ký để nhận mã OTP xác
+                    thực khôi phục mật khẩu.</p>
+
+                <div class="form-field-group">
+                    <label class="field-label" for="recovery-input">Mã định danh hoặc Số điện thoại</label>
+                    <div class="input-container">
+                        <input type="text" class="form-input" id="recovery-input"
+                            placeholder="Ví dụ: 0912 345 678 hoặc 001202008888">
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="btn-cancel-modal">Hủy bỏ</button>
+                    <button type="button" class="btn-modal-confirm" id="btn-confirm-recovery">Gửi mã OTP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toast-msg">Thông báo</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const identifierInput = document.getElementById('identifier-input');
+            const passwordInput = document.getElementById('password-input');
+            const rememberCheckbox = document.getElementById('remember-me');
+            const btnTogglePwd = document.getElementById('btn-toggle-pwd');
+            const eyeIcon = document.getElementById('eye-icon');
+            const btnForgotPwd = document.getElementById('btn-forgot-password');
+            const forgotModal = document.getElementById('forgot-modal');
+            const btnCloseForgotModal = document.getElementById('btn-close-forgot-modal');
+            const btnCancelModal = document.getElementById('btn-cancel-modal');
+            const btnConfirmRecovery = document.getElementById('btn-confirm-recovery');
+            const recoveryInput = document.getElementById('recovery-input');
+            const toastNotice = document.getElementById('toast-notice');
+            const toastMsg = document.getElementById('toast-msg');
+
+            // Toast Notification Helper
+            let toastTimer = null;
+            function showToast(message, isError = false) {
+                if (toastTimer) clearTimeout(toastTimer);
+                toastMsg.textContent = message;
+                toastNotice.classList.add('show');
+                toastTimer = setTimeout(() => {
+                    toastNotice.classList.remove('show');
+                }, 3200);
+            }
+
+            // 1. Pre-fill Saved Identifier if "Lưu thông tin" was previously checked
+            const savedId = localStorage.getItem('aegislife_saved_id');
+            if (savedId) {
+                identifierInput.value = savedId;
+                rememberCheckbox.checked = true;
+            }
+
+            // 2. Toggle Password Visibility (Eye Icon)
+            btnTogglePwd.addEventListener('click', () => {
+                const isPassword = passwordInput.getAttribute('type') === 'password';
+                passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+
+                if (isPassword) {
+                    // Eye Off SVG
+                    eyeIcon.innerHTML = `
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          `;
+                    btnTogglePwd.title = 'Ẩn mật khẩu';
+                } else {
+                    // Eye On SVG
+                    eyeIcon.innerHTML = `
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          `;
+                    btnTogglePwd.title = 'Hiện mật khẩu';
+                }
+            });
+
+            // 3. Quick-fill Sample Chips
+            document.querySelectorAll('.hint-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const idVal = chip.getAttribute('data-id');
+                    const pwdVal = chip.getAttribute('data-pwd');
+                    identifierInput.value = idVal;
+                    passwordInput.value = pwdVal;
+                    showToast(`Đã tự động điền: ${idVal}`);
+                });
+            });
+
+            // 4. Form Submit Handler
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const identifier = identifierInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                if (!identifier) {
+                    showToast('Vui lòng nhập Mã BHYT, ĐDCN hoặc CCCD!');
+                    identifierInput.focus();
+                    return;
+                }
+
+                if (!password) {
+                    showToast('Vui lòng nhập Mật khẩu!');
+                    passwordInput.focus();
+                    return;
+                }
+
+                // Handle "Lưu thông tin" (Remember me)
+                if (rememberCheckbox.checked) {
+                    localStorage.setItem('aegislife_saved_id', identifier);
+                } else {
+                    localStorage.removeItem('aegislife_saved_id');
+                }
+
+                // Animate button loading state
+                const submitBtn = document.getElementById('btn-submit-login');
+                const origText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+          <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 0.8s linear infinite;">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
+          </svg>
+          <span>Đang xác thực...</span>
+        `;
+
+                // Style for spinner
+                if (!document.getElementById('spinner-keyframes')) {
+                    const style = document.createElement('style');
+                    style.id = 'spinner-keyframes';
+                    style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+                    document.head.appendChild(style);
+                }
+
+                // Simulate successful login and transition to portal
+                setTimeout(() => {
+                    showToast('Đăng nhập thành công! Đang chuyển hướng...');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 900);
+                }, 800);
+            });
+
+            // 5. Modal: Quên Mật Khẩu Open / Close
+            function openForgotModal() {
+                forgotModal.classList.add('active');
+                forgotModal.setAttribute('aria-hidden', 'false');
+                if (identifierInput.value) {
+                    recoveryInput.value = identifierInput.value;
+                }
+                setTimeout(() => recoveryInput.focus(), 150);
+            }
+
+            function closeForgotModal() {
+                forgotModal.classList.remove('active');
+                forgotModal.setAttribute('aria-hidden', 'true');
+            }
+
+            btnForgotPwd.addEventListener('click', (e) => {
+                e.preventDefault();
+                openForgotModal();
+            });
+
+            btnCloseForgotModal.addEventListener('click', closeForgotModal);
+            btnCancelModal.addEventListener('click', closeForgotModal);
+
+            // Close modal on background overlay click
+            forgotModal.addEventListener('click', (e) => {
+                if (e.target === forgotModal) {
+                    closeForgotModal();
+                }
+            });
+
+            // Esc key to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && forgotModal.classList.contains('active')) {
+                    closeForgotModal();
+                }
+            });
+
+            // Confirm OTP Send
+            btnConfirmRecovery.addEventListener('click', () => {
+                const val = recoveryInput.value.trim();
+                if (!val) {
+                    showToast('Vui lòng nhập Số CCCD hoặc Số điện thoại!');
+                    recoveryInput.focus();
+                    return;
+                }
+
+                closeForgotModal();
+                showToast(`Mã xác thực OTP đã được gửi tới số liên hệ liên kết với ${val}!`);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
